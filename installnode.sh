@@ -1,25 +1,21 @@
 #!/bin/bash
 
-echo "xen.32x.me"
+clear
+echo "Check out xen.32x.me"
 echo "Updating the system..."
 sudo apt update && sudo apt upgrade -y
-
-echo "xen.32x.me"
+clear
 echo "Removing any existing Node.js installations..."
 sudo apt remove -y nodejs
-echo "xen.32x.me"
+
 echo "Installing prerequisites..."
 sudo apt install -y curl software-properties-common
 
-echo "xen.32x.me"
-echo "Adding Node.js repository..."
-curl -fsSL https://deb.nodesource.com/setup_current.x | sudo -E bash -
 
-echo "xen.32x.me"
 echo "Installing Node.js and NPM..."
-sudo apt install -y nodejs
+sudo apt install nodejs npm -y
 
-echo "xen.32x.me"
+
 echo "Verifying Node.js and NPM installation..."
 node_version=$(node -v)
 npm_version=$(npm -v)
