@@ -8,6 +8,7 @@ npm_version=$(npm -v)
 
 if [[ $node_version="v12.22.9" && $npm_version="8.5.1" ]]; then
     echo "Upgrade to latest version"
+    echo "wakeup"
     nvm install 22.9.0
 else
     echo "There was an error installing Node.js or NPM."
