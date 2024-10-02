@@ -2,37 +2,36 @@
 
 clear
 echo "Check out xen.32x.me"
-echo "Updating the system..."
-sudo apt update && sudo apt upgrade -y
-clear
-echo "Removing any existing Node.js installations..."
-sudo apt remove -y nodejs
-
-echo "Installing prerequisites..."
-sudo apt install -y curl software-properties-common
-
-
-echo "Installing Node.js and NPM..."
-sudo apt install nodejs npm -y
-
-
 echo "Verifying Node.js and NPM installation..."
 node_version=$(node -v)
 npm_version=$(npm -v)
 
-if [[ $node_version && $npm_version ]]; then
-    echo "Node.js version: $node_version"
-    echo "NPM version: $npm_version"
-    echo "Node.js and NPM have been successfully installed."
+if [[ $node_version="v12.22.9" && $npm_version="8.5.1" ]]; then
+    echo "Upgrade to latest version"
 else
     echo "There was an error installing Node.js or NPM."
     exit 1
 fi
 
+clear
+echo "Check out xen.32x.me"
+echo "Updating the system..."
+sudo apt update && sudo apt upgrade -y
 
-echo "Upgrading NPM to the latest version..."
-sudo npm install -g npm@latest
+clear
 
-echo "NPM has been upgraded to: $(npm -v)"
+echo "Installing prerequisites..."
+sudo apt install -y curl software-properties-common
 
-echo "Installation and upgrade completed!"
+
+echo "Installing Node.js and NPM"
+sudo apt install nodejs npm -y
+
+
+
+clear
+
+echo "Upgrading NodeJS and NPM"
+wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
+echo "You need to create a new terminal/login again to install the latest nodejs version"
+
